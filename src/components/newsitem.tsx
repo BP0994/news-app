@@ -10,10 +10,10 @@ export default function NewsItems({
   publishedAt,
   url
 }: {
-  title: string;
-  image: string;
-  publishedAt:string;
-  url:string
+  title?: string;
+  image?: string;
+  publishedAt?:string;
+  url?:string
 }) {
   return (
     <Card className="py-4">
