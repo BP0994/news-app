@@ -23,7 +23,7 @@ const NewsBoard = () => {
     <div>
       <h2>all data is here</h2>
       <div className="flex flex-wrap  md:gap-x-12 sm:mx-auto max-[1170px]:max-w-[800px]   md:p-12">
-        {table.map((data) => {
+        {table.map((data : {title:string,content:string,description:string, url:string , urlToImage:string,author:string}) => {
           return (
             <div className="" key={data.title}>
               <CardContainer className="inter-var">
@@ -75,14 +75,14 @@ const NewsBoard = () => {
         })}
       </div>
       <div className="flex flex-wrap w-[400px]">
-        {table.map((data) => {
+        {table.map((data : {title:string,content:string,description:string, url:string , urlToImage:string,author:string}) => {
           return (
-            <div key={data.tittle}>
+            <div className="my-8" key={data.title}>
               <NewsItems
                 title={data.content}
                 image={data.urlToImage}
-                description={data.description}
-                publishedAt={data.publishedAt}
+                publishedAt={data.author}
+                url={data.url}
               />
             </div>
           );
