@@ -1,36 +1,56 @@
 /** @format */
 "use client";
-import { Card, CardHeader, CardBody, Image, Button } from "@nextui-org/react";
-
-
+import { Image } from "@nextui-org/react";
+import { CardBody, CardContainer, CardItem } from "./ui/3d-card";
 
 export default function NewsItems({
   title,
   image,
   publishedAt,
-  url
+  url,
 }: {
   title?: string;
   image?: string;
-  publishedAt?:string;
-  url?:string
+  publishedAt?: string;
+  url?: string;
 }) {
   return (
-    <Card className="py-4">
-      <CardHeader className="pb-0 pt-2 px-4 flex-col items-start">
-        <p className="text-tiny uppercase font-bold">{title}</p>
-        <small className="text-default-500">{publishedAt}</small>
-      </CardHeader>
-      <CardBody className="overflow-visible py-2">
-        <Image
-         
-          alt="Card background"
-          className="object-cover rounded-xl my-4"
-          src={image}
-          width={270}
-        />
-        <Button className="my-2"  href={url}>see more</Button>
-      </CardBody>
-    </Card>
+    <div className="">
+      <CardContainer className="inter-var">
+        <CardBody className="bg-gray-50 relative group/card  dark:hover:shadow-2xl dark:hover:shadow-emerald-500/[0.1] dark:bg-black dark:border-white/[0.2] border-black/[0.1] w-auto sm:w-[30rem] h-auto rounded-xl p-6 border  ">
+          <CardItem
+            translateZ="50"
+            className="text-xl font-bold text-neutral-600 dark:text-white"
+          >
+            {title}
+          </CardItem>
+          <CardItem
+            as="p"
+            translateZ="60"
+            className="text-neutral-500 text-sm max-w-sm mt-2 dark:text-neutral-300"
+          >
+            {publishedAt}
+          </CardItem>
+          <CardItem translateZ="100" className="w-full mt-4">
+            <Image
+              src={image}
+              height="1000"
+              width="1000"
+              className="h-60 w-full object-cover rounded-xl group-hover/card:shadow-xl"
+              alt="thumbnail"
+            />
+          </CardItem>
+          <div className="flex justify-between items-center mt-20">
+            <CardItem
+              translateZ={20}
+              as="button"
+              className="px-4 py-2 rounded-xl text-xs font-normal dark:text-white"
+            >
+              {url}
+            </CardItem>
+          </div>
+        </CardBody>
+      </CardContainer>
+    </div>
   );
 }
