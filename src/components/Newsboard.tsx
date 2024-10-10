@@ -1,5 +1,4 @@
 /** @format */
-"use client";
 import { useEffect, useState } from "react";
 import { CardBody, CardContainer, CardItem } from "./ui/3d-card";
 import { Image, Link } from "@nextui-org/react";
@@ -9,9 +8,10 @@ const NewsBoard = () => {
   const [table, setTable] = useState([]);
   const [food, setFood] = useState([]);
   useEffect(() => {
-    fetch(
-      "https://newsapi.org/v2/top-headlines?country=us&apiKey=a35f4865a3f04152af4bb97ceefc6822"
-    )
+    const url = `https://newsapi.org/v2/top-headlines?country=us&apiKey=${
+      import.meta.env.VITE_NEWS_API_KEY
+    }`;
+    fetch(url)
       .then((response) => response.json())
       .then((data) => {
         setTable(data.articles);
@@ -58,7 +58,7 @@ const NewsBoard = () => {
                       className="text-neutral-500 text-sm max-w-sm mt-2 dark:text-neutral-300"
                     >
                       {data.description
-                        ? data.description
+                        ? data.description.slice(0,100)
                         : " no data founeded"}
                     </CardItem>
                     <CardItem translateZ="100" className="w-full mt-4">
