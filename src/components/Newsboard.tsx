@@ -10,7 +10,7 @@ const NewsBoard = () => {
   const [food, setFood] = useState([]);
   useEffect(() => {
     fetch(
-      "https://newsapi.org/v2/top-headlines?country=in&apiKey=8ae872bfe2bd401381c158e36f31a323"
+      "https://newsapi.org/v2/top-headlines?country=us&apiKey=a35f4865a3f04152af4bb97ceefc6822"
     )
       .then((response) => response.json())
       .then((data) => {
@@ -50,7 +50,7 @@ const NewsBoard = () => {
                       translateZ="50"
                       className="text-xl font-bold text-neutral-600 dark:text-white"
                     >
-                      {data.content ? data.content : "no content"}
+                      {data.title ? data.title : "no content"}
                     </CardItem>
                     <CardItem
                       as="p"
